@@ -46,9 +46,10 @@ func main() {
 
 	fmt.Println()
 	// rune 本质是一个 int32 他主要是用来 放字符的
-	//var c2 rune
-	//c2 = "我是一个小男孩"
-	//fmt.Printf("c2=%c", c2)
+	var c2 byte
+	c2 = 'a'
+	fmt.Printf("c2=%c", c2)
+	fmt.Println(c2)
 
 	// 数据类型的转换
 
@@ -79,4 +80,10 @@ func main() {
 	myi := 32
 	msyi := strconv.Itoa(myi)
 	fmt.Println(msyi)
+
+	const (
+		oo = iota
+		ii
+		uu
+	)
 }
