@@ -11,7 +11,7 @@ func main() {
 		pointer nil
 		slice nil
 		map nil
-		channel interface function nil
+		channel Interface function nil
 
 		struct 默认值不是nil 是具体字段的默认值
 	*/
