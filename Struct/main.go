@@ -5,6 +5,22 @@ import (
 	"strconv"
 )
 
+type Per struct {
+	name string
+	ages int
+}
+
+// 方法接收器有两种形态 还有一种指针形态 如果你想要改变p的value
+// 数据较大的时候也会使用指针的方式
+func (p *Per) Print() {
+	p.name = "9989456"
+	fmt.Printf("name:%s, age: %d", p.name, p.ages)
+}
+
+//func (p Per) Print() {
+//	fmt.Printf("name:%s, age: %d", p.name, p.ages)
+//}
+
 func main() {
 	// type 关键字
 
@@ -75,6 +91,51 @@ func main() {
 			height:  5.1212},
 	}
 	fmt.Println(ww)
+
+	// day 2
+	fmt.Println("--------------")
+
+	var p Person
+
+	p.age = 20
+
+	fmt.Println(p.name)
+	fmt.Println(p.age)
+
+	// 匿名结构体 匿名函数
+	addres := struct {
+		country string
+	}{
+		country: "通州",
+	}
+	fmt.Println(addres.country)
+
+	// 结构体嵌套
+
+	// 第一种嵌套方式
+	type Stu struct {
+		//p Per
+
+		// 第二种嵌套方式 匿名嵌套
+		Per // 就不需要在 s.p.name了
+
+		score float32
+	}
+
+	s := Stu{
+		Per{
+			"erkelost", 999,
+		},
+		88.88,
+	}
+	fmt.Println(s)
+
+	// 结构体绑定方法
+
+	wwe := Per{
+		"adny", 99,
+	}
+	wwe.Print()
 }
 
 type My int // 扩展其他方法 int 扩展一个 string 的方法
