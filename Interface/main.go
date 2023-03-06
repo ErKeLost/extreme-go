@@ -36,9 +36,19 @@ func main() {
 
 	// 接口的嵌套
 
-	var wwe MyWc = &oow{}
+	//var wwe MyWc = &oow{}
 
-	wwe.Close()
+	//wwe.Close()
+	var data = []interface{}{
+		"adny", 18, 1.80,
+	}
+	mPrint(data)
+}
+
+func mPrint(datas ...interface{}) {
+	for _, value := range datas {
+		fmt.Println(value)
+	}
 }
 
 type MyWriter interface {
