@@ -5,7 +5,42 @@ import (
 	"strconv"
 )
 
+func printZz(s []string) {
+	s[0] = "java"
+
+	// 这时候 courses 的值已经变了 理论上像引用传递
+
+	for i := 0; i < 10; i++ {
+		s = append(s, strconv.Itoa(i))
+	}
+	// 这个是值传递 那为什么会有上面那种引用传递的效果呢
+}
+
 func main() {
+	// slice原理解析
+
+	coursess := []string{"erkelost", "adny", "mysql"}
+	printZz(coursess)
+	fmt.Println(coursess)
+	// 删除slice
+	sliceCourse := []string{"erkelost", "adny", "mysql"}
+	fmt.Println(sliceCourse)
+
+	mySlice := append(sliceCourse[:2])
+
+	fmt.Println(mySlice)
+
+	// 复制slice
+	//copySlice := sliceCourse
+	//copySlice := sliceCourse[:]
+
+	var course = make([]string, len(sliceCourse))
+
+	copy(course, sliceCourse)
+
+	fmt.Println(course)
+
+	// slice 原理
 
 	// 切片就是数组 但是可以不定义长度
 
