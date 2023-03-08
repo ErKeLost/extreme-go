@@ -110,11 +110,15 @@ func main() {
 func printNum() {
 	i := 1
 	for {
+
+		// 如何做到在循环的时候 等待另一个 goroutine来通知我
+
+		// 接收一个number
 		<-number
 		// 等待另一个 goroutine 改打印了
 		fmt.Printf("%d%d", i, i+1)
 		i += 2
-
+		// 该打印letter 了 然后给 letter 赋值
 		letter <- true
 	}
 }
@@ -123,13 +127,14 @@ func printLetter() {
 	i := 0
 	str := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	for {
-		<-letter
+		<-letter // 先接收letter channel 通知
 		// 等待另一个 goroutine 改打印了
 		if i >= len(str) {
 			return
 		}
 		fmt.Print(str[i : i+2])
 		i += 2
+		// 接收完了之后 告诉number 接受一个值
 		number <- true
 	}
 }
